@@ -1,6 +1,14 @@
-def main():
-    print("Hello from bullet-shooting!")
+import pyxel
 
+class App:
+    def __init__(self) -> None:
+        pyxel.init(160, 120, title="Hello Pyxel")
+        pyxel.run(self.update, self.draw)
 
-if __name__ == "__main__":
-    main()
+    def update(self) -> None:
+        pass
+
+    def draw(self) -> None:
+        pass
+
+App()
