@@ -2,6 +2,15 @@ import pyxel
 
 BULLET_SPEED = 5
 
+IMAGE_OFFSET_PLAYER_DEFAULT_X = 0
+IMAGE_OFFSET_PLAYER_DEFAULT_Y = 0
+IMAGE_OFFSET_PLAYER_MOVING_X = 16
+IMAGE_OFFSET_PLAYER_MOVING_Y = 0
+IMAGE_OFFSET_AIM_X = 32
+IMAGE_OFFSET_AIM_Y = 0
+IMAGE_OFFSET_BULLET_X = 48
+IMAGE_OFFSET_BULLET_Y = 0
+
 class Player:
     def __init__(self, x, y, direction) -> None:
         self.x = x
@@ -27,9 +36,9 @@ class Player:
 
     def draw(self):
         if self.is_moving:
-            pyxel.blt(self.x, self.y, 0, 16, 0, 16 * self.direction, 16, colkey=13) # set 13th color as transparent
+            pyxel.blt(self.x, self.y, 0, IMAGE_OFFSET_PLAYER_MOVING_X, IMAGE_OFFSET_PLAYER_MOVING_Y, 16 * self.direction, 16, colkey=13) # set 13th color as transparent
         else:
-            pyxel.blt(self.x, self.y, 0, 0, 0, 16 * self.direction, 16, colkey=13) # set 13th color as transparent
+            pyxel.blt(self.x, self.y, 0, IMAGE_OFFSET_PLAYER_DEFAULT_X, IMAGE_OFFSET_PLAYER_DEFAULT_Y, 16 * self.direction, 16, colkey=13) # set 13th color as transparent
 
 
 class Bullet:
@@ -44,7 +53,7 @@ class Bullet:
         self.y += self.speed * pyxel.sin(self.rad)
 
     def draw(self):
-        pyxel.blt(self.x, self.y, 0, 48, 0, 16, 16, colkey=13) # set 13th color as transparent
+        pyxel.blt(self.x, self.y, 0, IMAGE_OFFSET_BULLET_X, IMAGE_OFFSET_BULLET_Y, 16, 16, colkey=13) # set 13th color as transparent
 
 class App:
     def __init__(self):
@@ -94,7 +103,7 @@ class App:
         # Use the flag in the draw method to draw the player with an offset when moving
         self.player.draw()
 
-        pyxel.blt(self.aim_x, self.aim_y, 0, 32, 0, 16, 16, colkey=13) # set 13th color as transparent
+        pyxel.blt(self.aim_x, self.aim_y, 0, IMAGE_OFFSET_AIM_X, IMAGE_OFFSET_AIM_Y, 16, 16, colkey=13) # set 13th color as transparent
 
         for bullet in self.bullet_list:
             bullet.draw()
