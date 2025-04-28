@@ -16,5 +16,6 @@ alwaysApply: false
 9. スコアを表示する
 10. ゲームオーバーの条件を設定する
 11. ゲームのリスタート機能を実装する
-12. LLMのfunction callを使ってステータスを変更する
-13. 数値だけでなく演出や弾道等をfunction callで反映する
+12. モジュール分割
+13. LLMのfunction callを使ってステータスを変更する
+14. 数値だけでなく演出や弾道等をfunction callで反映する
