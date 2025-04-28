@@ -181,6 +181,16 @@ class App:
             if pyxel.btnp(pyxel.KEY_Q):
                 pyxel.quit()
 
+            if pyxel.btnp(pyxel.KEY_R):
+                self.game_over = False
+                self.kill_count = 0
+                self.health = 2
+                self.enemy_list = []
+                new_enemy = Enemy(100, 100)
+                new_enemy2 = Enemy(50, 50)
+                self.enemy_list.append(new_enemy)
+                self.enemy_list.append(new_enemy2)
+
         if self.game_over == False:
             if pyxel.btnp(pyxel.KEY_Q):
                 pyxel.quit()
@@ -262,6 +272,12 @@ class App:
                 WINDOW_WIDTH // 2 - 20,
                 WINDOW_HEIGHT // 2 + 20,
                 "Press Q to quit",
+                pyxel.frame_count % 16,
+            )
+            pyxel.text(
+                WINDOW_WIDTH // 2 - 20,
+                WINDOW_HEIGHT // 2 + 40,
+                "Press R to restart",
                 pyxel.frame_count % 16,
             )
 
